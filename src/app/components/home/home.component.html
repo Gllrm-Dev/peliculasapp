@@ -1,0 +1,30 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Peliculas App</h1>
+    <p class="lead">Esta es una aplicacion de peliculas.</p>
+  </div>
+</div>
+
+<div class="container">
+
+ <app-cuadro
+    [peliculas]="cartelera | slice:0:6"
+    titulo ="Películas en Cartelera">
+  </app-cuadro>
+
+  <app-cuadro
+    [peliculas]="populares | slice:0:6"
+    titulo ="Películas Populares">
+</app-cuadro>
+
+  <!-- <app-cuadro
+    [peliculas]="popularesNinos | slice:0:6"
+    titulo ="Películas populares en niños">
+</app-cuadro> -->
+<ng-container *ngFor="let peliculas of popularesClas; let i = index">
+<app-cuadro
+[peliculas]="peliculas | slice:0:6"
+[titulo] ="certifiaciones[i].titulo">
+</app-cuadro>
+</ng-container>
+</div>
