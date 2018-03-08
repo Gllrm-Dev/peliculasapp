@@ -7,21 +7,21 @@ import { element } from 'protractor';
 export class GenerosPipe implements PipeTransform {
 
   transform(pelicula: any, genre: any[]): any {
-    let str: string = '';
+    let str: any = '';
     let generos: string = '';
 
+if (pelicula.length > 0 && genre) {
     pelicula.forEach(element => {
       str = genre.find(o => o.id === element );
+      console.log(str);
+      if (str) {
       generos += str.name + ', ';
-
-
+      }
     });
-
-if (generos.length > 1) {
+  } else {
+    generos = 'Sin género. ';
+  }
    generos = generos.slice(0, -2) + '.';
-} else {
-  generos = 'Sin género.';
-}
    console.log(generos);
     return generos;
   }
